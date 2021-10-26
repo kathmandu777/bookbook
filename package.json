@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youngeek-0410/django-template.git"
+    "url": "git@github.com:kathmandu777/bookbook.git"
   },
   "author": "kathmandu777",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/youngeek-0410/django-template/issues"
+    "url": "https://github.com/kathmandu777/bookbook/issues"
   },
-  "homepage": "https://github.com/youngeek-0410/django-template#readme",
+  "homepage": "https://github.com/kathmandu777/bookbook#readme",
   "devDependencies": {
     "husky": "^4.3.8",
     "lint-staged": "^8.1.5",
