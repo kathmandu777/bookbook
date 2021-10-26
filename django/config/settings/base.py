@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "core",
     "account",
+    "bookmanager",
 ]
 
 MIDDLEWARE = [
