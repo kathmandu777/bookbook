@@ -9,6 +9,7 @@ class Book(BaseModelMixin, models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=30, blank=True)
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='book_images', blank=True)
 
     def __str__(self):
         return self.title
