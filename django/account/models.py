@@ -33,6 +33,13 @@ class User(UuidModelMixin, AbstractBaseUser, PermissionsMixin):
         max_length=250,
         unique=True,
     )
+    line_uid = models.CharField(
+        _("line uid"),
+        max_length=250,
+        unique=True,
+        null=True,
+        blank=True,
+    )
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
