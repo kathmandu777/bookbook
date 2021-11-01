@@ -218,7 +218,7 @@ def confirm_to_reserve_book_template(book, user):
 
 @handler.add(PostbackEvent)
 def on_postback(event):
-    MAX_BORROWABLE_BOOK_COUNT = 2
+    MAX_BORROWABLE_BOOK_COUNT = 3
     reply_token = event.reply_token
     user_id = event.source.user_id
     postback_data = urllib.parse.parse_qs(event.postback.data)
