@@ -6,4 +6,4 @@ from ..models import Book
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
 
-    list_display = ("title", "author", "description", "can_borrow")
+    list_display = ("title", "author", "description", "can_borrow", "image")

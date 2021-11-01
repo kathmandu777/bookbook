@@ -213,5 +213,9 @@ LOGGING = {
             "handlers": ["console", "file"],
             "level": LOG_LOGGER_LEVEL,
         },
+        "bookmanager": {
+            "handlers": ["console", "file"],
+            "level": LOG_LOGGER_LEVEL,
+        },
     },
 }

@@ -12,12 +12,9 @@ class RentalLogAdmin(admin.ModelAdmin):
         "borrowed_at",
         "returned_at",
     )
-    list_filter = (
-        "borrower",
-        "book",
-    )
+    list_filter = ("borrower", "book", "returned_at")
     search_fields = (
         "borrower__name",
         "book__title",
     )
-    ordering = ("borrowed_at",)
+    ordering = ("-borrowed_at",)

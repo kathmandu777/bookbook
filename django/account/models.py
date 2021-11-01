@@ -1,3 +1,4 @@
+from bookmanager.models import RentalLog
 from core.models import UuidModelMixin
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
@@ -63,3 +64,7 @@ class User(UuidModelMixin, AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
+
+    @property
+    def borrowing_books_count(self):
+        return RentalLog.objects.filter(borrower__line_uid=self.line_uid, returned_at=None).count()
