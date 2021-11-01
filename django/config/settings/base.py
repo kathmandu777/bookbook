@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "debug_toolbar",
+    "rest_framework",
     "core",
     "account",
     "bookmanager",
@@ -209,6 +210,10 @@ LOGGING = {
             "level": LOG_LOGGER_LEVEL,
         },
         "core": {
+            "handlers": ["console", "file"],
+            "level": LOG_LOGGER_LEVEL,
+        },
+        "bookmanager": {
             "handlers": ["console", "file"],
             "level": LOG_LOGGER_LEVEL,
         },
