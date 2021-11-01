@@ -30,6 +30,7 @@ logger = getLogger(__name__)
 
 line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN", ""))
 handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET", ""))
+MAX_CAROUSEL_COLUMN_COUNT = 10
 
 
 def get_handler():
@@ -109,7 +110,7 @@ def reserved_book_template(line_uid):
 
 
 def return_book_template(line_uid):
-    borrowing_books = RentalLog.objects.filter(borrower__line_uid=line_uid, returned_at=None)[:10]
+    borrowing_books = RentalLog.objects.filter(borrower__line_uid=line_uid, returned_at=None)[:MAX_CAROUSEL_COLUMN_COUNT]
     if borrowing_books.count() == 0:
         return TextSendMessage(text="貸出中の本はありません")
     return TemplateSendMessage(
@@ -137,7 +138,7 @@ def borrow_book_template():
     cannot_borrow_book_uuid = (
         RentalLog.objects.filter(returned_at__isnull=True).values_list("book", flat=True).distinct()
     )
-    avairable_books = Book.objects.exclude(uuid__in=cannot_borrow_book_uuid)[:10]
+    avairable_books = Book.objects.exclude(uuid__in=cannot_borrow_book_uuid)[:MAX_CAROUSEL_COLUMN_COUNT]
     if len(avairable_books) == 0:
         return TextSendMessage(text="貸出可能な本はありません")
     return TemplateSendMessage(
@@ -169,7 +170,7 @@ def reserve_book_template(line_uid):
         .values_list("book", flat=True)
         .distinct()
     )
-    borrowed_by_others_book = Book.objects.filter(uuid__in=borrowed_by_others_book_uuid)[:10]
+    borrowed_by_others_book = Book.objects.filter(uuid__in=borrowed_by_others_book_uuid)[:MAX_CAROUSEL_COLUMN_COUNT]
     if len(borrowed_by_others_book) == 0:
         return TextSendMessage(text="他の人が貸出中の本はありません")
     return TemplateSendMessage(
